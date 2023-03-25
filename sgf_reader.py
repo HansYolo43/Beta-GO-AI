@@ -25,9 +25,10 @@ Note:
 """
 import os
 import board as b
+import GameTree as gt
 
 
-def read_sgf(file_name: str, file_directory: str, do_deletion: bool):
+def read_sgf(file_name: str, file_directory: str, do_deletion: bool) -> b:
     """
     Reads a single SGF file and checks if it has a valid result. If it does not have a valid result and
     do_deletion is True, the file will be deleted.
@@ -64,6 +65,7 @@ def read_sgf(file_name: str, file_directory: str, do_deletion: bool):
                 elif stone[0] == "W":
                     board.add_stone(x, y, "White")
             print(board)
+    return board
 
 
 def read_all_sgf_in_folder(folder_directory: str, do_deletion: bool = False):
@@ -79,6 +81,14 @@ def read_all_sgf_in_folder(folder_directory: str, do_deletion: bool = False):
 
 
 if __name__ == '__main__':
+    # All of this is for debugging
+    # TODO: prints multiple times, fix when it should and should not print
+    # TODO: instead of using the final state of the board, add the moves in the order they are in the files (change gt.tree.insert_move_sequence())
     games_folder_path_absolute = '/Users/dmitriivlasov/Downloads/go9/'
     games_folder_path_relative = 'games/'
     read_all_sgf_in_folder(games_folder_path_relative, False)
+    board = read_sgf("2015-10-31T13:03:14.292Z_gm2ia3rklqft.sgf", "games/", False)
+    move_sequence = board.board_to_move_sequence()
+    tree = gt.GameTree()
+    tree.insert_move_sequence(move_sequence)
+    print(tree)
