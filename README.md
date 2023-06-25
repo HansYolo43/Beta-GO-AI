@@ -5,7 +5,7 @@
 Welcome to our project! This page provides a comprehesive overview of our project, but feel free 
 to simply skip down to the [instructions](#instructions) to try it out!
 
-
+For a NEW UPDATED VERSION of this project, please see: https://github.com/LatinScribe/BetaGoZero
 # Problem Description and Research Question 
 
 Our project is centered around the domain of the game Go. Go is a two
